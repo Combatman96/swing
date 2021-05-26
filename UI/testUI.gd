@@ -10,3 +10,7 @@ func _ready():
 
 func _on_Health_health_change(health):
 	$HealthBar/ProgressBar.value = health
+
+
+func _on_Coin_coin_change(coin):
+	$CoinCount/Label.text = str(coin)

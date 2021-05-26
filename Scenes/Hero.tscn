@@ -1,10 +1,11 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://ASSETS_SWING/Character Hero/FX/Effects/Effect1 Gameboy Spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Hero.gd" type="Script" id=2]
 [ext_resource path="res://ASSETS_SWING/Character Hero/die/ghost.png" type="Texture" id=3]
 [ext_resource path="res://ASSETS_SWING/Character Hero/FX/Effects/Effect 1 - Sprite Sheet.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Health.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Coin.gd" type="Script" id=6]
 [ext_resource path="res://ASSETS_SWING/Character Hero/hero_full_sheet.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=62]
@@ -366,9 +367,6 @@ tracks/0/keys = {
 [node name="Hero" type="KinematicBody2D"]
 collision_mask = 264
 script = ExtResource( 2 )
-SPEED = 110
-GRAVITY = 28
-JUMPFORCE = 500
 
 [node name="hero_full_sheet" type="Sprite" parent="."]
 texture = ExtResource( 12 )
@@ -450,13 +448,16 @@ playback_speed = 2.0
 anims/FX2 = SubResource( 84 )
 
 [node name="DashTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 2.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource( 5 )
+
+[node name="Coin" type="Node2D" parent="."]
+script = ExtResource( 6 )
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="body_entered" from="HitBox2" to="." method="_on_HitBox_body_entered"]

@@ -28,7 +28,6 @@ func set_direction(hor_direction):
 	direction = Vector2(hor_dir_mod, direction.y) # update direction
 	
 func _physics_process(delta):
-	
 	if player != null :
 		velocity.x = position.x - player.position.x
 		if velocity.x > 0:

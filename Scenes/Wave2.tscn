@@ -6,8 +6,8 @@
 [ext_resource path="res://Assets/Kauzz Forest Tiles/Backgrounds/Midleground Extended.png" type="Texture" id=4]
 [ext_resource path="res://UI/testUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Kauzz Forest Tiles/Backgrounds/Background Extended Green.png" type="Texture" id=6]
-[ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=7]
-[ext_resource path="res://UI/EndScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Ghost.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Fying Eye.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 384, 640, 0, 640, 0, 384, 384, 384 )
@@ -75,7 +75,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
-[node name="NewLevel" type="Node"]
+[node name="Wave2" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
@@ -86,6 +86,9 @@ tile_data = PoolIntArray( 65488, 1, 0, 65504, 2, 0, 65512, 1, 0, 0, 1, 0, 24, 1,
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
 position = Vector2( 316.801, 299.807 )
+
+[node name="hero_full_sheet" parent="Hero" index="0"]
+frame = 6
 
 [node name="AnimationTree" parent="Hero" index="2"]
 parameters/playback = SubResource( 4 )
@@ -106,7 +109,16 @@ drag_margin_bottom = 0.6
 editor_draw_drag_margin = true
 
 [node name="Goblin2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 518.319, 251.124 )
+position = Vector2( -174.24, 309.492 )
+
+[node name="Fying Eye" parent="Goblin2" instance=ExtResource( 8 )]
+position = Vector2( 778.065, -224.36 )
+
+[node name="Ghost2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -251.431, 308.677 )
+
+[node name="Ghost" parent="." instance=ExtResource( 7 )]
+position = Vector2( -99.8991, 283.983 )
 
 [node name="Goblin" parent="." instance=ExtResource( 3 )]
 position = Vector2( 72.0529, 251.124 )
@@ -123,15 +135,7 @@ margin_top = -180.0
 margin_right = 320.0
 margin_bottom = 180.0
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="Pause" parent="CanvasLayer2" instance=ExtResource( 7 )]
-pause_mode = 2
-
-[node name="End" parent="CanvasLayer2" instance=ExtResource( 8 )]
-
 [connection signal="health_change" from="Hero/Health" to="CanvasLayer/Control" method="_on_Health_health_change"]
-[connection signal="health_depleted" from="Hero/Health" to="CanvasLayer2/End" method="_on_Health_health_depleted"]
 [connection signal="coin_change" from="Hero/Coin" to="CanvasLayer/Control" method="_on_Coin_coin_change"]
 
 [editable path="Hero"]

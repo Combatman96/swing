@@ -15,7 +15,8 @@ func _ready():
 func take_damage(amount):
 	health -= amount
 	health = max(0, health)
-	print(health)
+	if (health <= 0):
+		emit_signal("health_depleted")
 	emit_signal("health_change", health)
 
 func heal(amount):

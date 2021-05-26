@@ -2,12 +2,12 @@ extends KinematicBody2D
 
 var velocity = Vector2.ZERO
 export var SPEED  = 200
-export var GRAVITY = 30
-export var JUMPFORCE = 100
+export var GRAVITY = 28
+export var JUMPFORCE = 500
 var can_attack = false
 var is_hurt = false
 var is_dashing = false
-var can_dash = false
+var can_dash = true
 var state_machine
 
 func _ready():
@@ -56,16 +56,17 @@ func handle_input():
 	elif velocity.y > 1 and is_hurt == false :
 		state_machine.travel("Fall")	
 
-	if Input.is_action_just_pressed("dash") and can_dash == false and is_hurt == false:
+	if Input.is_action_just_pressed("dash") and can_dash == true and is_dashing == false and is_hurt == false:
 		print("dashing")
 		is_dashing = true
 		SPEED = 800
 		state_machine.travel("Run")
-		can_dash = true
+		can_dash = false
 		$Timer.start()
+		$DashTimer.start() 
 		return
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	handle_input()	
 	velocity.y  += GRAVITY	
 	velocity = move_and_slide(velocity, Vector2.UP)
@@ -73,10 +74,10 @@ func _physics_process(delta):
 	#print(can_attack)
 
 func got_hurt(var backward):
-	print("OUCH!!")
 	is_hurt = true
 	#health -1
 	$Health.take_damage(10)
+	$Coin.get_money(2)
 	if $Health.health <= 0:
 		die()
 	#play the animation
@@ -113,16 +114,13 @@ func die():
 func _on_AttackTimer_timeout():
 	can_attack = false
 
-
 func _on_HitBox_body_entered(body):
 	body.got_hit()
 	#play the hit incdicator
 	$FX2/Play2.play("FX2") 
 
-
 func _on_StunTimer_timeout():
 	is_hurt = false
-
 
 func _on_InvinciblityTimer_timeout():
 	print("Invincible OVER")
@@ -130,9 +128,7 @@ func _on_InvinciblityTimer_timeout():
 	set_collision_mask_bit(8, true)
 	
 func _on_Timer_timeout():
-	can_dash = false
-	$DashTimer.start() 
-	is_dashing = false  
+	is_dashing = false
 	SPEED = 200
 
 #FOR THE GAP BETWEEN DASHES
