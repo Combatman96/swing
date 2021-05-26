@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Block/block.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Hero.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Kauzz Forest Tiles/Backgrounds/Background Extended Green.png" type="Texture" id=6]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/EndScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Background.gd" type="Script" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 384, 640, 0, 640, 0, 384, 384, 384 )
@@ -76,6 +77,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
 [node name="NewLevel" type="Node"]
+script = ExtResource( 9 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
@@ -86,6 +88,9 @@ tile_data = PoolIntArray( 65488, 1, 0, 65504, 2, 0, 65512, 1, 0, 0, 1, 0, 24, 1,
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
 position = Vector2( 316.801, 299.807 )
+
+[node name="hero_full_sheet" parent="Hero" index="0"]
+frame = 8
 
 [node name="AnimationTree" parent="Hero" index="2"]
 parameters/playback = SubResource( 4 )
@@ -127,11 +132,23 @@ margin_bottom = 180.0
 
 [node name="Pause" parent="CanvasLayer2" instance=ExtResource( 7 )]
 pause_mode = 2
+visible = false
 
 [node name="End" parent="CanvasLayer2" instance=ExtResource( 8 )]
+visible = false
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+
+[node name="Ground1" type="Position2D" parent="SpawnPoint"]
+position = Vector2( 43.438, 310.423 )
+
+[node name="Ground2" type="Position2D" parent="SpawnPoint"]
+position = Vector2( 581.645, 307.244 )
 
 [connection signal="health_change" from="Hero/Health" to="CanvasLayer/Control" method="_on_Health_health_change"]
 [connection signal="health_depleted" from="Hero/Health" to="CanvasLayer2/End" method="_on_Health_health_depleted"]
 [connection signal="coin_change" from="Hero/Coin" to="CanvasLayer/Control" method="_on_Coin_coin_change"]
+[connection signal="ready" from="SpawnPoint" to="." method="_on_SpawnPoint_ready"]
+[connection signal="ready" from="SpawnPoint/Ground1" to="." method="_on_Ground1_ready"]
 
 [editable path="Hero"]
