@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ASSETS_SWING/Skeleton/Sword_sprite.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/projectile2.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 11.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Collie"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sword_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.15
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sword_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "Collie"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "Flying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+
+[sub_resource type="AnimationNodeStateMachine" id=7]
+states/Collie/node = SubResource( 4 )
+states/Collie/position = Vector2( 539, 87 )
+states/Flying/node = SubResource( 5 )
+states/Flying/position = Vector2( 319, 86.5556 )
+transitions = [ "Flying", "Collie", SubResource( 6 ) ]
+start_node = "Flying"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
+
+[node name="projectile2" type="Area2D"]
+collision_layer = 256
+collision_mask = 16
+script = ExtResource( 2 )
+
+[node name="Sword_sprite" type="Sprite" parent="."]
+position = Vector2( -5, -3 )
+texture = ExtResource( 1 )
+hframes = 8
+frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Collie = SubResource( 2 )
+anims/Flying = SubResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 7 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 8 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_projectile_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

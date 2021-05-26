@@ -1,0 +1,124 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Block/block.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Hero.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Goblin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Kauzz Forest Tiles/Backgrounds/Midleground Extended.png" type="Texture" id=4]
+[ext_resource path="res://UI/testUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Kauzz Forest Tiles/Backgrounds/Background Extended Green.png" type="Texture" id=6]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 384, 640, 0, 640, 0, 384, 384, 384 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="TileSet" id=3]
+0/name = "Background Extended Green.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 224, 256, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "Midleground Extended.png 1"
+1/texture = ExtResource( 4 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 384, 640 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 1 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "block.png 2"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 2 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+
+[node name="NewLevel" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 3 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 31775
+format = 1
+tile_data = PoolIntArray( 65488, 1, 0, 65504, 2, 0, 65512, 1, 0, 0, 1, 0, 24, 1, 0, 48, 1, 0, 50, 2, 0, 131040, 2, 0, 65586, 2, 0, 196576, 2, 0, 131122, 2, 0, 262112, 2, 0, 196658, 2, 0, 327648, 2, 0, 262194, 2, 0, 393184, 2, 0, 327730, 2, 0, 458720, 2, 0, 393266, 2, 0, 524256, 2, 0, 458802, 2, 0, 589792, 2, 0, 524338, 2, 0, 655328, 2, 0, 589874, 2, 0, 720864, 2, 0, 655410, 2, 0, 786400, 2, 0, 720946, 2, 0, 851936, 2, 0, 786482, 2, 0, 917472, 2, 0, 852018, 2, 0, 983008, 2, 0, 917554, 2, 0, 1048544, 2, 0, 983090, 2, 0, 1114080, 2, 0, 1048626, 2, 0, 1179616, 2, 0, 1114162, 2, 0, 1245152, 2, 0, 1179698, 2, 0, 1310688, 2, 0, 1245234, 2, 0, 1376224, 2, 0, 1310770, 2, 0, 1441760, 2, 0, 1376306, 2, 0, 1507296, 2, 0, 1441842, 2, 0 )
+
+[node name="Hero" parent="." instance=ExtResource( 2 )]
+position = Vector2( 316.801, 299.807 )
+SPEED = 200
+
+[node name="hero_full_sheet" parent="Hero" index="0"]
+frame = 8
+
+[node name="AnimationTree" parent="Hero" index="2"]
+parameters/playback = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="Hero"]
+offset = Vector2( 0, -50 )
+current = true
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.6
+editor_draw_drag_margin = true
+
+[node name="Goblin2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 518.319, 251.124 )
+
+[node name="Goblin" parent="." instance=ExtResource( 3 )]
+position = Vector2( 72.0529, 251.124 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource( 5 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -180.0
+margin_right = 320.0
+margin_bottom = 180.0
+
+[connection signal="health_change" from="Hero/Health" to="CanvasLayer/Control" method="_on_Health_health_change"]
+
+[editable path="Hero"]

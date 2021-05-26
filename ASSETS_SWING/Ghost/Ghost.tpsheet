@@ -1,0 +1,78 @@
+{
+	"textures": [
+		{
+			"image": "Ghost_fullsheet.png",
+			"size": {
+				"w": 832,
+				"h": 144
+			},
+			"sprites": [
+				{
+					"filename": "ghost-appears.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 384,
+						"h": 48
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "ghost-vanish.png",
+					"region": {
+						"x": 384,
+						"y": 0,
+						"w": 448,
+						"h": 64
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "ghost-idle.png",
+					"region": {
+						"x": 0,
+						"y": 64,
+						"w": 448,
+						"h": 80
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "ghost-shriek.png",
+					"region": {
+						"x": 448,
+						"y": 64,
+						"w": 256,
+						"h": 80
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:5fbb81b46909a75a1bfdcee5e391ae08:61d1e45b276bfb2eaccbbd0489130199:e0db533205a2ee2edbb0051f441b1681$"
+	}
+}

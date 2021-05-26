@@ -1,0 +1,138 @@
+{
+	"textures": [
+		{
+			"image": "Skeleton_fullsheet.png",
+			"size": {
+				"w": 1200,
+				"h": 1200
+			},
+			"sprites": [
+				{
+					"filename": "Attack.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 1200,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Attack2.png",
+					"region": {
+						"x": 0,
+						"y": 150,
+						"w": 1200,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Attack3.png",
+					"region": {
+						"x": 0,
+						"y": 300,
+						"w": 900,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Death.png",
+					"region": {
+						"x": 0,
+						"y": 450,
+						"w": 600,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Idle.png",
+					"region": {
+						"x": 0,
+						"y": 600,
+						"w": 600,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Shield.png",
+					"region": {
+						"x": 0,
+						"y": 750,
+						"w": 600,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Take Hit.png",
+					"region": {
+						"x": 0,
+						"y": 900,
+						"w": 600,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Walk.png",
+					"region": {
+						"x": 0,
+						"y": 1050,
+						"w": 600,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:6cf0d6745c7bfe0f4fc8c54e571d5105:34f01831e7ed79cec54cf7c3af6602f0:17462d6c06d4718c45626422c7678191$"
+	}
+}

@@ -1,0 +1,202 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://ASSETS_SWING/Ghost/Ghost_fullsheet.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Ghost.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 13.0
+height = 15.9279
+
+[sub_resource type="Animation" id=2]
+resource_name = "Booing"
+length = 0.7
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost_fullsheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 14, 15, 16, 17, 18, 19, 20 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Gone"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost_fullsheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10, 11, 12 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Scare"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost_fullsheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 22, 23 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost_fullsheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Transition"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost_fullsheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 21 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Booing"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Gone"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Scare"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Show Up"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Transition"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachine" id=18]
+states/Booing/node = SubResource( 7 )
+states/Booing/position = Vector2( 468.333, 153.074 )
+states/Gone/node = SubResource( 8 )
+states/Gone/position = Vector2( 795, 153.222 )
+states/Scare/node = SubResource( 9 )
+states/Scare/position = Vector2( 747, 37.6667 )
+"states/Show Up/node" = SubResource( 10 )
+"states/Show Up/position" = Vector2( 263, 152.333 )
+states/Transition/node = SubResource( 11 )
+states/Transition/position = Vector2( 551, 37.2222 )
+transitions = [ "Show Up", "Booing", SubResource( 12 ), "Booing", "Transition", SubResource( 13 ), "Transition", "Scare", SubResource( 14 ), "Scare", "Gone", SubResource( 15 ), "Booing", "Gone", SubResource( 16 ), "Scare", "Booing", SubResource( 17 ) ]
+start_node = "Show Up"
+end_node = "Gone"
+graph_offset = Vector2( 0, -36.207 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 15, 17 )
+
+[sub_resource type="CapsuleShape2D" id=21]
+radius = 13.0
+height = 16.0
+
+[node name="Ghost" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="Ghost_fullsheet" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 13
+vframes = 2
+frame = 16
+
+[node name="Hurt_Box" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Booing = SubResource( 2 )
+anims/Gone = SubResource( 3 )
+anims/Scare = SubResource( 4 )
+"anims/Show Up" = SubResource( 5 )
+anims/Transition = SubResource( 6 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 18 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 19 )
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 128
+
+[node name="DetectionZone" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2( -29, 0 )
+shape = SubResource( 20 )
+
+[node name="DetectionZone2" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2( 29, 0 )
+shape = SubResource( 20 )
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="HitZone" type="CollisionShape2D" parent="HitBox"]
+position = Vector2( 0, -3 )
+shape = SubResource( 21 )
+
+[node name="TimeToGo" type="Timer" parent="."]
+wait_time = 0.65
+one_shot = true
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
+[connection signal="timeout" from="TimeToGo" to="." method="_on_TimeToGo_timeout"]

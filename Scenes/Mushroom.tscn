@@ -1,0 +1,291 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://ASSETS_SWING/Mushroom/Mushroom_fullsheet.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Mushroom.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11, 16 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Bite"
+length = 0.4
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mushroom_fullsheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1, 0.16, 0.22, 0.28, 0.32, 0.36 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 12, 13, 14, 15, 16, 17, 18 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BiteHitBox/BiteZone:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.32, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Die"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mushroom_fullsheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 33, 34, 35, 36 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Hurt"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mushroom_fullsheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 67, 68, 69 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mushroom_fullsheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 44, 45, 46, 47 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Run"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mushroom_fullsheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 55, 56, 57, 58, 59, 60, 61, 62 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.55
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mushroom_fullsheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SporeHitbox/SporeZone:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.35, 0.55 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 9.0
+
+[sub_resource type="CapsuleShape2D" id=10]
+height = 16.0
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 25.02
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 122, 23 )
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "Bite"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Die"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Hurt"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Run"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "SporeAttack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachine" id=30]
+states/Bite/node = SubResource( 13 )
+states/Bite/position = Vector2( 443.543, 280.333 )
+states/Die/node = SubResource( 14 )
+states/Die/position = Vector2( 19, 156.333 )
+states/Hurt/node = SubResource( 15 )
+states/Hurt/position = Vector2( 211.444, 371.247 )
+states/Idle/node = SubResource( 16 )
+states/Idle/position = Vector2( 211, 155.099 )
+states/Run/node = SubResource( 17 )
+states/Run/position = Vector2( 445.074, 157.897 )
+states/SporeAttack/node = SubResource( 18 )
+states/SporeAttack/position = Vector2( 17.6666, 372.185 )
+transitions = [ "Idle", "Run", SubResource( 19 ), "Idle", "Die", SubResource( 20 ), "Run", "Bite", SubResource( 21 ), "Idle", "Bite", SubResource( 22 ), "Bite", "Idle", SubResource( 23 ), "Idle", "Hurt", SubResource( 24 ), "Run", "Hurt", SubResource( 25 ), "Bite", "Hurt", SubResource( 26 ), "Hurt", "SporeAttack", SubResource( 27 ), "SporeAttack", "Idle", SubResource( 28 ), "Run", "Idle", SubResource( 29 ) ]
+start_node = "Idle"
+end_node = "Die"
+graph_offset = Vector2( -197.258, 128.91 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=31]
+
+[node name="Mushroom" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="Mushroom_fullsheet" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 11
+vframes = 7
+frame = 45
+
+[node name="HurtBox" type="CollisionShape2D" parent="."]
+position = Vector2( 2, 10 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Bite = SubResource( 2 )
+anims/Die = SubResource( 3 )
+anims/Hurt = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Run = SubResource( 6 )
+anims/SporeAttack = SubResource( 7 )
+
+[node name="BiteRange" type="Area2D" parent="."]
+collision_layer = 128
+
+[node name="DetectionZone" type="CollisionShape2D" parent="BiteRange"]
+position = Vector2( 18, 18 )
+shape = SubResource( 8 )
+
+[node name="BiteHitBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="BiteZone" type="CollisionShape2D" parent="BiteHitBox"]
+position = Vector2( 18, 3 )
+shape = SubResource( 9 )
+disabled = true
+
+[node name="BodyHitbox" type="CollisionShape2D" parent="BiteHitBox"]
+position = Vector2( 1, 7 )
+shape = SubResource( 10 )
+
+[node name="SporeHitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="SporeZone" type="CollisionShape2D" parent="SporeHitbox"]
+position = Vector2( 5, -2 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 128
+
+[node name="DetectionZone" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource( 12 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 30 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 31 )
+
+[node name="DeadAwait" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Wait" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="body_entered" from="BiteRange" to="." method="_on_BiteRange_body_entered"]
+[connection signal="body_entered" from="BiteHitBox" to="." method="_on_BiteHitBox_body_entered"]
+[connection signal="body_entered" from="SporeHitbox" to="." method="_on_SporeHitbox_body_entered"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]
+[connection signal="timeout" from="DeadAwait" to="." method="_on_DeadAwait_timeout"]
+[connection signal="timeout" from="Wait" to="." method="_on_Wait_timeout"]

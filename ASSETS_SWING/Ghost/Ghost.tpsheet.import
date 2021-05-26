@@ -1,0 +1,15 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+path="res://.import/Ghost.tpsheet-094cac64f8e9aa9fe6a52ca85bc6ce4f.res"
+
+[deps]
+
+files=[ "res://ASSETS_SWING/Ghost/Ghost.sprites/ghost-appears.tres", "res://ASSETS_SWING/Ghost/Ghost.sprites/ghost-vanish.tres", "res://ASSETS_SWING/Ghost/Ghost.sprites/ghost-idle.tres", "res://ASSETS_SWING/Ghost/Ghost.sprites/ghost-shriek.tres" ]
+
+source_file="res://ASSETS_SWING/Ghost/Ghost.tpsheet"
+dest_files=[ "res://.import/Ghost.tpsheet-094cac64f8e9aa9fe6a52ca85bc6ce4f.res", "res://ASSETS_SWING/Ghost/Ghost.sprites/ghost-appears.tres", "res://ASSETS_SWING/Ghost/Ghost.sprites/ghost-vanish.tres", "res://ASSETS_SWING/Ghost/Ghost.sprites/ghost-idle.tres", "res://ASSETS_SWING/Ghost/Ghost.sprites/ghost-shriek.tres" ]
+
+[params]
+

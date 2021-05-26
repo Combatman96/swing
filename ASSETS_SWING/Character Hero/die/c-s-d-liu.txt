@@ -1,0 +1,96 @@
+﻿create all
+
+nhập dữ liệu vào các bảng( mỗi 1 bảng có 10 cái)
+(lương từ 5tr trở lên
+số tiền trong hợp đồng 500tr-3ty
+thời gian năm 2020 lấy ví dụ tháng 6 năm 2020)
+
+hiển thị
+hiển thị danh sách các nhân viên 4 loại nhân viên
+hiển thị tất cả số và nội dung hợp đồng
+
+
+
+in ra thông tin của hợp đồng có giá trị lớn nhất ở mỗi chi nhánh.
+
+in ra số kiot cho thue
+
+doanh thu của một chi nhánh trong một tháng=tổng((số tiền của hợp đồng / số tháng trong hợp đồng cho thuê))- lương nhân viên trong tháng
+
+hiển thị thông tin nhân viên kế toán  mà đã thực hiện hợp đồng có giá trị trên 2 tỷ
+
+hiển thị thông tin nhân viên cơ sở vật chất và nhân viên kế toán cùng làm một hợp đồng
+
+
+hiển thị tên của các chủ thuê kiot mà thuê các vị trí trùng nhau tại các chi nhánh khác nhau
+
+
+
+IN RA HỢP ĐỒNG CÓ GIÁ TRỊ LỚN NHẤT Ở MỖI CHI NHÁNH.
+
+CREATE VIEW A AS
+(SELECT ten_chi_nhanh_KO , giá trị hợp đồng         
+FROM   HOPDONG_GIATRI, HOPDONG_KIOT
+WHERE  HOPDONG_GIATRI .mã nv cơ sở vật chất=HOPDONG_KIOT .mã nv cơ sở vật chất
+AND    HOPDONG_GIATRI .mã nv kế toán=HOPDONG_KIOT .mã nv kế toán) ;
+
+
+CREATE VIEW B AS (
+SELECT MAX( giá trị hợp đồng ) AS GTHDLN, ten_chi_nhanh_KO
+FROM A
+GROUP BY (ten_chi_nhanh_KO)
+);
+
+SELECT HOPDONG_GIATRI.số hợp đồng
+FROM HOPDONG_GIATRI, B
+WHERE  HOPDONG_GIATRI.giá trị hợp đồng = B.GTHDLN;
+ 
+
+hiển thị CMND và Mã nhân viên kế toán  mà đã thực hiện hợp đồng có giá trị trên 2 tỷ
+
+HOPDONG_GIATRI: (Số hợp đồng,CMND-TCK, mã nhân viên- cơ sở vật chất, thời hạn; giá trị hợp đồng; mã nhân- viên kế toán;)
+
+SELECT CMND, C.mã nhân viên kế toán
+FROM Nhân viên kế toán, (SELECT mã nhân viên kế toán	
+		FROM HOPDONG_GIATRI
+		WHERE giá trị hợp đồng > 2 tỷ) AS C
+WHERE Nhân viên kế toán.MÃ nhân viên = C.mã nhân viên kế toán;
+
+
+hiển thị thông tin nhân viên cơ sở vật chất và nhân viên kế toán cùng làm một hợp đồng
+
+CREATE VIEW D AS
+(SELECT DISTINCT mã nhân 	viên cơ sở vật chất, mã nhân viên kế toán
+	FROM HOPDONG_GIATRI
+	GROUP BY (HOPDONG_GIATRI )) 
+
+
+SELECT Nhân viên cơ sở vật chất.CMND, Nhân viên kế toán. CMND
+FROM Nhân viên cơ sở vật chất, Nhân viên kế toán
+WHERE Nhân viên cơ sở vật chất.CMND IN D
+	AND Nhân viên kế toán.CMND IN D;
+
+
+hiển thị tên của các chủ thuê kiot mà thuê các vị trí trùng nhau tại các chi nhánh khác nhau
+
+HOPDONG_KIOT: (Mã nhân viên kế toán,mã nhân viên cơ sở vật chất,CMND-CTK,vị trí,tên chi nhánh-KO)
+
+CREATE VIEW E AS
+(SELECT HOPDONG_KIOT.CMND-CTK, vị trí, tên chi nhánh-KO
+	FROM HOPDONG_KIOT
+	GROUP BY (vị trí, tên chi nhánh-KO))
+
+CREATE VIEW F AS
+(
+SELECT CT1.CMND AS CMND1 , CT2.CMND AS CMND2
+FROM Chủ thuê kiot AS CT1, Chủ thuê kiot AS CT2 
+WHERE CT1.CMND IN E
+	AND
+	CT2.CMND IN E;
+);
+ 
+SELECT DISTINCT N1.Ten , N2. Tên 
+FROM Người AS N1, Người AS N2
+WHERE N1.CMND = CMND1
+AND N2.CMND = CMND2
+AND CMND1 > CMND2;

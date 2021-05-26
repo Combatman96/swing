@@ -1,0 +1,108 @@
+{
+	"textures": [
+		{
+			"image": "Flying_Eye_sheet.png",
+			"size": {
+				"w": 1200,
+				"h": 900
+			},
+			"sprites": [
+				{
+					"filename": "Attack.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 1200,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Attack2.png",
+					"region": {
+						"x": 0,
+						"y": 150,
+						"w": 1200,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Attack3.png",
+					"region": {
+						"x": 0,
+						"y": 300,
+						"w": 900,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Death.png",
+					"region": {
+						"x": 0,
+						"y": 450,
+						"w": 600,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Flight.png",
+					"region": {
+						"x": 0,
+						"y": 600,
+						"w": 1200,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Take Hit.png",
+					"region": {
+						"x": 0,
+						"y": 750,
+						"w": 600,
+						"h": 150
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:b380629430b339f76778fa517ce6fe49:6650edaecc3a0a2e90e4421f1175daad:70315c96d361b2df18869a0020464876$"
+	}
+}

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ASSETS_SWING/Hell Beast/hell-beast-breath.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Gargoyle.gd" type="Script" id=2]
+
+[node name="Gargoyle" type="Sprite"]
+texture = ExtResource( 1 )
+hframes = 4
+frame = 3
+script = ExtResource( 2 )
+
+[node name="ProjectileSpawnPoint" type="Node2D" parent="."]
+position = Vector2( -14.8325, 7.68111 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

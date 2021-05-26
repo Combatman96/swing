@@ -1,0 +1,15 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+path="res://.import/Mushroom.tpsheet-bdd455c976b9a0df9811a4d2c196722d.res"
+
+[deps]
+
+files=[ "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Attack.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Attack2.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Attack3.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Death.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Idle.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Run.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Take Hit.tres" ]
+
+source_file="res://ASSETS_SWING/Mushroom/Mushroom.tpsheet"
+dest_files=[ "res://.import/Mushroom.tpsheet-bdd455c976b9a0df9811a4d2c196722d.res", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Attack.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Attack2.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Attack3.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Death.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Idle.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Run.tres", "res://ASSETS_SWING/Mushroom/Mushroom.sprites/Take Hit.tres" ]
+
+[params]
+

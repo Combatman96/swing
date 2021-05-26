@@ -1,0 +1,15 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+path="res://.import/Skeleton.tpsheet-d74ff48f7125e4ee785fb2d25675218d.res"
+
+[deps]
+
+files=[ "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Attack.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Attack2.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Attack3.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Death.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Idle.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Shield.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Take Hit.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Walk.tres" ]
+
+source_file="res://ASSETS_SWING/Skeleton/Skeleton.tpsheet"
+dest_files=[ "res://.import/Skeleton.tpsheet-d74ff48f7125e4ee785fb2d25675218d.res", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Attack.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Attack2.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Attack3.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Death.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Idle.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Shield.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Take Hit.tres", "res://ASSETS_SWING/Skeleton/Skeleton.sprites/Walk.tres" ]
+
+[params]
+

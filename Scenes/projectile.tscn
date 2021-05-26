@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ASSETS_SWING/Flying eye/projectile_sprite.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/projectile.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Collie"
+length = 0.15
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("projectile_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.09, 0.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 6 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Flying"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("projectile_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "Collie"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "Flying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+
+[sub_resource type="AnimationNodeStateMachine" id=7]
+states/Collie/node = SubResource( 4 )
+states/Collie/position = Vector2( 533.667, 76.3333 )
+states/Flying/node = SubResource( 5 )
+states/Flying/position = Vector2( 336.333, 76.3333 )
+transitions = [ "Flying", "Collie", SubResource( 6 ) ]
+start_node = "Flying"
+end_node = "Collie"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
+
+[node name="projectile" type="Area2D"]
+collision_layer = 256
+collision_mask = 16
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="projectile_sprite" type="Sprite" parent="."]
+modulate = Color( 0.945098, 0.258824, 0.0509804, 1 )
+texture = ExtResource( 1 )
+flip_h = true
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Collie = SubResource( 2 )
+anims/Flying = SubResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 7 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 8 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_projectile_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

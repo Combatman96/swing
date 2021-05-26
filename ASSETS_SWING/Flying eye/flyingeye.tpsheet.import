@@ -1,0 +1,15 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+path="res://.import/flyingeye.tpsheet-79c4e33d1fe278758bcfc1b3ed03817a.res"
+
+[deps]
+
+files=[ "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Attack.tres", "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Attack2.tres", "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Attack3.tres", "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Death.tres", "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Flight.tres", "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Take Hit.tres" ]
+
+source_file="res://ASSETS_SWING/Flying eye/flyingeye.tpsheet"
+dest_files=[ "res://.import/flyingeye.tpsheet-79c4e33d1fe278758bcfc1b3ed03817a.res", "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Attack.tres", "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Attack2.tres", "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Attack3.tres", "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Death.tres", "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Flight.tres", "res://ASSETS_SWING/Flying eye/flyingeye.sprites/Take Hit.tres" ]
+
+[params]
+

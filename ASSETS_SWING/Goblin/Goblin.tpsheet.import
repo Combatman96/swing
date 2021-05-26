@@ -1,0 +1,15 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+path="res://.import/Goblin.tpsheet-c297503a444b02534993e1fb78bbba80.res"
+
+[deps]
+
+files=[ "res://ASSETS_SWING/Goblin/Goblin.sprites/Attack.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Attack2.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Attack3.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Death.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Idle.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Run.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Take Hit.tres" ]
+
+source_file="res://ASSETS_SWING/Goblin/Goblin.tpsheet"
+dest_files=[ "res://.import/Goblin.tpsheet-c297503a444b02534993e1fb78bbba80.res", "res://ASSETS_SWING/Goblin/Goblin.sprites/Attack.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Attack2.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Attack3.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Death.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Idle.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Run.tres", "res://ASSETS_SWING/Goblin/Goblin.sprites/Take Hit.tres" ]
+
+[params]
+
