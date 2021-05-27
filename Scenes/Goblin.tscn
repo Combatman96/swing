@@ -271,15 +271,15 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+switch_mode = 2
+auto_advance = true
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=26]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
 [sub_resource type="AnimationNodeStateMachine" id=28]
 states/Die/node = SubResource( 12 )
@@ -294,7 +294,7 @@ states/Run/node = SubResource( 16 )
 states/Run/position = Vector2( 585.036, 179 )
 states/StandAttack/node = SubResource( 17 )
 states/StandAttack/position = Vector2( 491.625, 307 )
-transitions = [ "Idle", "Dodge", SubResource( 18 ), "Dodge", "Run", SubResource( 19 ), "Run", "StandAttack", SubResource( 20 ), "Run", "Hurt", SubResource( 21 ), "Dodge", "Hurt", SubResource( 22 ), "StandAttack", "Hurt", SubResource( 23 ), "Idle", "Hurt", SubResource( 24 ), "Hurt", "Idle", SubResource( 26 ), "StandAttack", "Idle", SubResource( 27 ), "Hurt", "Die", SubResource( 30 ) ]
+transitions = [ "Idle", "Dodge", SubResource( 18 ), "Dodge", "Run", SubResource( 19 ), "Run", "StandAttack", SubResource( 20 ), "Run", "Hurt", SubResource( 21 ), "Dodge", "Hurt", SubResource( 22 ), "StandAttack", "Hurt", SubResource( 23 ), "Idle", "Hurt", SubResource( 24 ), "Hurt", "Idle", SubResource( 25 ), "StandAttack", "Idle", SubResource( 26 ), "Hurt", "Die", SubResource( 27 ) ]
 start_node = "Idle"
 end_node = "Die"
 
@@ -309,7 +309,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 hframes = 12
 vframes = 7
-frame = 48
+frame = 50
 
 [node name="hurtBox" type="CollisionShape2D" parent="."]
 position = Vector2( -2, 10 )
@@ -358,6 +358,10 @@ parameters/playback = SubResource( 29 )
 wait_time = 2.0
 one_shot = true
 
+[node name="SpawnRate" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
 [connection signal="timeout" from="DeadAwait" to="." method="_on_DeadAwait_timeout"]
+[connection signal="timeout" from="SpawnRate" to="." method="_on_SpawnRate_timeout"]

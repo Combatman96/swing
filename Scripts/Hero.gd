@@ -18,6 +18,7 @@ const DIRECTION_RIGHT = 1
 const DIRECTION_LEFT = -1
 var direction = Vector2(DIRECTION_RIGHT, 1)
 
+var floating_text = preload("res://UI/FloatingText.tscn")
 
 func set_direction(hor_direction):
 	if hor_direction == 0:
@@ -74,10 +75,13 @@ func _physics_process(_delta):
 	#print(can_attack)
 
 func got_hurt(var backward):
+	var text = floating_text.instance()
+	text.amount = 5
+	text.direction = direction
+	add_child(text)
 	is_hurt = true
 	#health -1
-	$Health.take_damage(10)
-	$Coin.get_money(2)
+	$Health.take_damage(5)
 	if $Health.health <= 0:
 		die()
 	#play the animation
@@ -96,6 +100,12 @@ func got_hurt(var backward):
 	set_collision_mask_bit(8, false)
 	set_collision_mask_bit(3, false)
 
+func heal(amount):
+	$Health.heal(amount)
+	
+func get_money(amount):
+	print(amount, "so tien nhan dc")
+	$CoinCount.get_money(amount)
 
 func die():
 	print("This is how I die.")
@@ -134,3 +144,9 @@ func _on_Timer_timeout():
 #FOR THE GAP BETWEEN DASHES
 func _on_DashTimer_timeout():
 	can_dash = true
+
+func add_coin():
+	$CoinCount.add_coin()
+
+func get_heart():
+	$Health.get_heart()

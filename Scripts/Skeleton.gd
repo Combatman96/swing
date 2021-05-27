@@ -81,24 +81,18 @@ func die():
 
 func _on_PlayerDetector_body_entered(body):
 	player = body
-	
-
 
 func _on_AttackRange_body_entered(body):
 	state_machine.travel("Shield")
 	is_attacking = true
 	$RecoveryTimer.start()
-	
-
 
 func _on_RecoveryTimer_timeout():
 	is_attacking = false
 
-
 func _on_HitBox_body_entered(body):
 	if player != null:
 		 player.got_hurt(direction.x)
-
 
 func _on_DeadTimer_timeout():
 	queue_free()

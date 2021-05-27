@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
+var coin = preload("res://Scenes/Coin.tscn")
+var heart = preload("res://Scenes/Heart.tscn")
+var rng = RandomNumberGenerator.new()
+
 var player = null
-
-
 var velocity = Vector2.ZERO 
 
 const DIRECTION_RIGHT = 1
@@ -16,8 +18,12 @@ export var HEALTH = 3
 
 export var SPEED = 0
 var GRAVITY = 30
+
+var drop = 0
+var floating_text = preload("res://UI/FloatingText.tscn")
 	
 func _ready():
+	$SpawnRate.start()
 	state_machine = $AnimationTree.get("parameters/playback")
 
 func set_direction(hor_direction):
@@ -53,6 +59,10 @@ func _on_PlayerDetector_body_entered(body):
 		
 		
 func got_hit():
+	var text = floating_text.instance()
+	text.amount = 1
+	text.direction = direction
+	add_child(text)
 	HEALTH -= 1
 	if HEALTH > 0:
 		state_machine.travel("Hurt")
@@ -60,7 +70,6 @@ func got_hit():
 		die()
 		
 func die():
-	#print("DEAD")
 	state_machine.travel("Die") 			
 	$HitBox.set_collision_layer_bit(3, false)
 	$PlayerDetector.set_collision_layer_bit(7, false)
@@ -68,11 +77,26 @@ func die():
 	set_collision_mask_bit(2, false)
 	$DeadAwait.start()
 	player = null
+	_get_drop()
+		
+func _get_drop():
+	if(drop == 0):
+		print("coin drop")
+		var coinSpawn = coin.instance()
+		coinSpawn.global_position = global_position
+		get_tree().get_root().add_child(coinSpawn)
+	if(drop == 1):
+		print("heart drop")
+		var heartSpawn = heart.instance()
+		heartSpawn.global_position = global_position
+		get_tree().get_root().add_child(heartSpawn)
 
 func _on_HitBox_body_entered(body):
 	if player != null:
 		player.got_hurt(direction.x)
 
-
 func _on_DeadAwait_timeout():
 	queue_free()
+
+func _on_SpawnRate_timeout():
+	drop = rng.randi_range(0, 2)

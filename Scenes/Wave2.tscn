@@ -7,7 +7,7 @@
 [ext_resource path="res://UI/testUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Kauzz Forest Tiles/Backgrounds/Background Extended Green.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Ghost.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Fying Eye.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/FyingEye.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 384, 640, 0, 640, 0, 384, 384, 384 )

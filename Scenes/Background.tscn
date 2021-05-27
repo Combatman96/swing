@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Block/block.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Hero.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Goblin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/Shop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Kauzz Forest Tiles/Backgrounds/Midleground Extended.png" type="Texture" id=4]
 [ext_resource path="res://UI/testUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Kauzz Forest Tiles/Backgrounds/Background Extended Green.png" type="Texture" id=6]
@@ -76,7 +76,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
-[node name="NewLevel" type="Node"]
+[node name="Background" type="Node"]
 script = ExtResource( 9 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -84,7 +84,7 @@ tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 31775
 format = 1
-tile_data = PoolIntArray( 65488, 1, 0, 65504, 2, 0, 65512, 1, 0, 0, 1, 0, 24, 1, 0, 48, 1, 0, 50, 2, 0, 131040, 2, 0, 65586, 2, 0, 196576, 2, 0, 131122, 2, 0, 262112, 2, 0, 196658, 2, 0, 327648, 2, 0, 262194, 2, 0, 393184, 2, 0, 327730, 2, 0, 458720, 2, 0, 393266, 2, 0, 524256, 2, 0, 458802, 2, 0, 589792, 2, 0, 524338, 2, 0, 655328, 2, 0, 589874, 2, 0, 720864, 2, 0, 655410, 2, 0, 786400, 2, 0, 720946, 2, 0, 851936, 2, 0, 786482, 2, 0, 917472, 2, 0, 852018, 2, 0, 983008, 2, 0, 917554, 2, 0, 1048544, 2, 0, 983090, 2, 0, 1114080, 2, 0, 1048626, 2, 0, 1179616, 2, 0, 1114162, 2, 0, 1245152, 2, 0, 1179698, 2, 0, 1310688, 2, 0, 1245234, 2, 0, 1376224, 2, 0, 1310770, 2, 0, 1441760, 2, 0, 1376306, 2, 0, 1507296, 2, 0, 1441842, 2, 0 )
+tile_data = PoolIntArray( 65488, 1, 0, 65512, 1, 0, 65525, 2, 0, 0, 1, 0, 24, 1, 0, 48, 1, 0, 50, 2, 0, 131061, 2, 0, 65586, 2, 0, 196597, 2, 0, 131122, 2, 0, 262133, 2, 0, 196658, 2, 0, 327669, 2, 0, 262194, 2, 0, 393205, 2, 0, 327730, 2, 0, 458741, 2, 0, 393266, 2, 0, 524277, 2, 0, 458802, 2, 0, 589813, 2, 0, 524338, 2, 0, 655349, 2, 0, 589874, 2, 0, 720885, 2, 0, 655410, 2, 0, 786421, 2, 0, 720946, 2, 0, 851957, 2, 0, 786482, 2, 0, 917493, 2, 0, 852018, 2, 0, 983029, 2, 0, 917554, 2, 0, 1048565, 2, 0, 983090, 2, 0, 1114101, 2, 0, 1048626, 2, 0, 1179637, 2, 0, 1114162, 2, 0, 1245173, 2, 0, 1179698, 2, 0, 1310709, 2, 0, 1245234, 2, 0, 1376245, 2, 0, 1310770, 2, 0, 1441781, 2, 0, 1376306, 2, 0, 1507317, 2, 0, 1441842, 2, 0 )
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
 position = Vector2( 316.801, 299.807 )
@@ -110,12 +110,6 @@ drag_margin_right = 0.1
 drag_margin_bottom = 0.6
 editor_draw_drag_margin = true
 
-[node name="Goblin2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 518.319, 251.124 )
-
-[node name="Goblin" parent="." instance=ExtResource( 3 )]
-position = Vector2( 72.0529, 251.124 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource( 5 )]
@@ -124,9 +118,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -320.0
-margin_top = -180.0
+margin_top = -180.794
 margin_right = 320.0
-margin_bottom = 180.0
+margin_bottom = 179.206
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -137,18 +131,74 @@ visible = false
 [node name="End" parent="CanvasLayer2" instance=ExtResource( 8 )]
 visible = false
 
+[node name="Shop" parent="CanvasLayer2" instance=ExtResource( 3 )]
+visible = false
+
 [node name="SpawnPoint" type="Node2D" parent="."]
 
+[node name="Sky1" type="Position2D" parent="SpawnPoint"]
+position = Vector2( -58.8331, 157.699 )
+
+[node name="Sky2" type="Position2D" parent="SpawnPoint"]
+position = Vector2( 88.3341, 158.202 )
+
+[node name="Sky3" type="Position2D" parent="SpawnPoint"]
+position = Vector2( 239.329, 160.219 )
+
+[node name="Sky4" type="Position2D" parent="SpawnPoint"]
+position = Vector2( 388.978, 156.881 )
+
+[node name="Sky5" type="Position2D" parent="SpawnPoint"]
+position = Vector2( 549.646, 165.793 )
+
+[node name="Sky6" type="Position2D" parent="SpawnPoint"]
+position = Vector2( 718.459, 161.81 )
+
 [node name="Ground1" type="Position2D" parent="SpawnPoint"]
-position = Vector2( 43.438, 310.423 )
+position = Vector2( -19.3415, 327.437 )
 
 [node name="Ground2" type="Position2D" parent="SpawnPoint"]
-position = Vector2( 581.645, 307.244 )
+position = Vector2( 160.307, 322.1 )
+
+[node name="Ground3" type="Position2D" parent="SpawnPoint"]
+position = Vector2( 499.975, 320.012 )
+
+[node name="Ground4" type="Position2D" parent="SpawnPoint"]
+position = Vector2( 696.788, 322.028 )
+
+[node name="GoblinSpawn" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Wave2" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Wave1" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="GhostSpawn" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="FyingEyeSpawn" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="MushroomSpawn" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="HellSoundSpawn" type="Timer" parent="."]
+wait_time = 4.0
 
 [connection signal="health_change" from="Hero/Health" to="CanvasLayer/Control" method="_on_Health_health_change"]
 [connection signal="health_depleted" from="Hero/Health" to="CanvasLayer2/End" method="_on_Health_health_depleted"]
-[connection signal="coin_change" from="Hero/Coin" to="CanvasLayer/Control" method="_on_Coin_coin_change"]
-[connection signal="ready" from="SpawnPoint" to="." method="_on_SpawnPoint_ready"]
-[connection signal="ready" from="SpawnPoint/Ground1" to="." method="_on_Ground1_ready"]
+[connection signal="coin_change" from="Hero/CoinCount" to="CanvasLayer/Control" method="_on_CoinCount_coin_change"]
+[connection signal="timeout" from="GoblinSpawn" to="." method="_on_GoblinSpawn_timeout"]
+[connection signal="timeout" from="GoblinSpawn" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="Wave2" to="CanvasLayer2/Shop" method="_on_Wave2_timeout"]
+[connection signal="timeout" from="Wave2" to="." method="_on_Wave2_timeout"]
+[connection signal="timeout" from="Wave1" to="CanvasLayer2/Shop" method="_on_Wave1_timeout"]
+[connection signal="timeout" from="Wave1" to="." method="_on_Wave1_timeout"]
+[connection signal="timeout" from="GhostSpawn" to="." method="_on_GhostSpawn_timeout"]
+[connection signal="timeout" from="FyingEyeSpawn" to="." method="_on_FyingEye_timeout"]
+[connection signal="timeout" from="MushroomSpawn" to="." method="_on_MushroomSpawn_timeout"]
+[connection signal="timeout" from="HellSoundSpawn" to="." method="_on_HellSoundSpawn_timeout"]
 
 [editable path="Hero"]

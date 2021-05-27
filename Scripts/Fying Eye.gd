@@ -46,6 +46,7 @@ func _physics_process(delta):
 
 	
 func got_hit():
+	
 	print("HIT!")
 	state_machine.travel("Hurt")
 	player = null

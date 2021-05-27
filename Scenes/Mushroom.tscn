@@ -219,7 +219,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 hframes = 11
 vframes = 7
-frame = 45
+frame = 47
 
 [node name="HurtBox" type="CollisionShape2D" parent="."]
 position = Vector2( 2, 10 )
@@ -282,6 +282,9 @@ one_shot = true
 wait_time = 0.4
 one_shot = true
 
+[node name="SpawnRate" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="body_entered" from="BiteRange" to="." method="_on_BiteRange_body_entered"]
 [connection signal="body_entered" from="BiteHitBox" to="." method="_on_BiteHitBox_body_entered"]
 [connection signal="body_entered" from="SporeHitbox" to="." method="_on_SporeHitbox_body_entered"]
@@ -289,3 +292,4 @@ one_shot = true
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]
 [connection signal="timeout" from="DeadAwait" to="." method="_on_DeadAwait_timeout"]
 [connection signal="timeout" from="Wait" to="." method="_on_Wait_timeout"]
+[connection signal="timeout" from="SpawnRate" to="." method="_on_SpawnRate_timeout"]

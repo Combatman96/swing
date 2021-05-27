@@ -5,10 +5,10 @@
 [ext_resource path="res://ASSETS_SWING/Character Hero/die/ghost.png" type="Texture" id=3]
 [ext_resource path="res://ASSETS_SWING/Character Hero/FX/Effects/Effect 1 - Sprite Sheet.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Health.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/Coin.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/CoinCount.gd" type="Script" id=6]
 [ext_resource path="res://ASSETS_SWING/Character Hero/hero_full_sheet.png" type="Texture" id=12]
 
-[sub_resource type="Animation" id=62]
+[sub_resource type="Animation" id=1]
 resource_name = "Air Attack"
 length = 0.15
 step = 0.01
@@ -37,7 +37,7 @@ tracks/1/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=63]
+[sub_resource type="Animation" id=2]
 resource_name = "Attack"
 length = 0.29
 step = 0.01
@@ -66,7 +66,7 @@ tracks/1/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=64]
+[sub_resource type="Animation" id=3]
 resource_name = "Fall"
 length = 0.1
 loop = true
@@ -83,7 +83,7 @@ tracks/0/keys = {
 "values": [ 12 ]
 }
 
-[sub_resource type="Animation" id=65]
+[sub_resource type="Animation" id=4]
 resource_name = "Hurt"
 length = 0.2
 step = 0.001
@@ -112,7 +112,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0.133333, 1, 1 ), Color( 0.662745, 1, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=66]
+[sub_resource type="Animation" id=5]
 resource_name = "Idle"
 length = 0.6
 loop = true
@@ -130,7 +130,7 @@ tracks/0/keys = {
 "values": [ 6, 7, 6, 8 ]
 }
 
-[sub_resource type="Animation" id=67]
+[sub_resource type="Animation" id=6]
 resource_name = "Jump"
 length = 0.3
 step = 0.001
@@ -147,7 +147,7 @@ tracks/0/keys = {
 "values": [ 9, 10, 11 ]
 }
 
-[sub_resource type="Animation" id=68]
+[sub_resource type="Animation" id=7]
 resource_name = "Run"
 length = 0.868421
 loop = true
@@ -253,90 +253,90 @@ transitions = [ "Idle", "Jump", SubResource( 15 ), "Jump", "Fall", SubResource( 
 start_node = "Idle"
 graph_offset = Vector2( -94.738, -62.201 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=69]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=36]
 
-[sub_resource type="RectangleShape2D" id=70]
+[sub_resource type="RectangleShape2D" id=37]
 
-[sub_resource type="RectangleShape2D" id=71]
+[sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 18, 12 )
 
-[sub_resource type="RectangleShape2D" id=72]
+[sub_resource type="RectangleShape2D" id=39]
 extents = Vector2( 14, 20 )
 
-[sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 32, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=73]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 64, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=74]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 96, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=75]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 128, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=58]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 160, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=59]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 192, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=60]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 224, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=61]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 256, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=76]
+[sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 64, 32 )
 
-[sub_resource type="AtlasTexture" id=77]
+[sub_resource type="AtlasTexture" id=41]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 32, 64, 32 )
 
-[sub_resource type="AtlasTexture" id=78]
+[sub_resource type="AtlasTexture" id=42]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 64, 64, 32 )
 
-[sub_resource type="AtlasTexture" id=79]
+[sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 96, 64, 32 )
 
-[sub_resource type="AtlasTexture" id=80]
+[sub_resource type="AtlasTexture" id=44]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 128, 64, 32 )
 
-[sub_resource type="AtlasTexture" id=81]
+[sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 160, 64, 32 )
 
-[sub_resource type="SpriteFrames" id=82]
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 128, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 160, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 192, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 224, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 256, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=55]
 animations = [ {
-"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ) ],
-"loop": false,
-"name": "Die",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ) ],
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ) ],
 "loop": false,
 "name": "WasHit",
 "speed": 12.0
+}, {
+"frames": [ SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ) ],
+"loop": false,
+"name": "Die",
+"speed": 8.0
 } ]
 
-[sub_resource type="Animation" id=83]
+[sub_resource type="Animation" id=56]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -350,7 +350,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=84]
+[sub_resource type="Animation" id=57]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -376,23 +376,23 @@ vframes = 2
 frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/Air Attack" = SubResource( 62 )
-anims/Attack = SubResource( 63 )
-anims/Fall = SubResource( 64 )
-anims/Hurt = SubResource( 65 )
-anims/Idle = SubResource( 66 )
-anims/Jump = SubResource( 67 )
-anims/Run = SubResource( 68 )
+"anims/Air Attack" = SubResource( 1 )
+anims/Attack = SubResource( 2 )
+anims/Fall = SubResource( 3 )
+anims/Hurt = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Jump = SubResource( 6 )
+anims/Run = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 35 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 69 )
+parameters/playback = SubResource( 36 )
 
 [node name="HurtBox" type="CollisionShape2D" parent="."]
 scale = Vector2( 1, 1.7 )
-shape = SubResource( 70 )
+shape = SubResource( 37 )
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 4
@@ -400,7 +400,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( 29, -4 )
-shape = SubResource( 71 )
+shape = SubResource( 38 )
 disabled = true
 
 [node name="HitBox2" type="Area2D" parent="."]
@@ -409,7 +409,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2"]
 position = Vector2( 25, -11 )
-shape = SubResource( 72 )
+shape = SubResource( 39 )
 disabled = true
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -424,7 +424,7 @@ one_shot = true
 one_shot = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 82 )
+frames = SubResource( 55 )
 animation = "WasHit"
 offset = Vector2( 0, -6 )
 
@@ -435,7 +435,7 @@ vframes = 6
 
 [node name="Play1" type="AnimationPlayer" parent="FX1"]
 playback_speed = 2.0
-anims/FX1 = SubResource( 83 )
+anims/FX1 = SubResource( 56 )
 
 [node name="FX2" type="Sprite" parent="."]
 position = Vector2( 37, -14 )
@@ -445,7 +445,7 @@ vframes = 6
 
 [node name="Play2" type="AnimationPlayer" parent="FX2"]
 playback_speed = 2.0
-anims/FX2 = SubResource( 84 )
+anims/FX2 = SubResource( 57 )
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -456,7 +456,7 @@ wait_time = 0.1
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
-[node name="Coin" type="Node2D" parent="."]
+[node name="CoinCount" type="Node2D" parent="."]
 script = ExtResource( 6 )
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]

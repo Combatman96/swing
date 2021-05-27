@@ -293,7 +293,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 8
-frame = 34
+frame = 33
 
 [node name="HurtBox" type="CollisionShape2D" parent="."]
 position = Vector2( 4, 1 )

@@ -11,6 +11,7 @@ const DIRECTION_LEFT = -1
 var direction = Vector2(DIRECTION_RIGHT, 1)
 
 var state_machine = null
+var floating_text = preload("res://UI/FloatingText.tscn")
 
 func set_direction(hor_direction):
 	if hor_direction == 0:
@@ -40,6 +41,7 @@ func _on_PlayerDetector_body_entered(body):
 	state_machine.travel("Scare")
 
 func _on_HitBox_body_entered(body):
+	player = body
 	player.got_hurt(-direction.x)
 
 func _on_PlayerDetector_body_exited(body):
@@ -47,6 +49,10 @@ func _on_PlayerDetector_body_exited(body):
 		state_machine.travel("Booing")
 
 func got_hit():
+	var text = floating_text.instance()
+	text.amount = 10
+	text.direction = direction
+	add_child(text)
 	player = null
 	was_hit = true
 	SPEED = 0
